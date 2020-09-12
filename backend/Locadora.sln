@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locadora.Domain", "src\Locadora.Domain\Locadora.Domain.csproj", "{2B2A412D-850A-4C27-8467-41C2CF6FA763}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Domain", "3. Domain", "{814CFF6D-3D7E-45C0-816F-69F59BF73564}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Distributed Services", "1. Distributed Services", "{47D64553-B01D-40EC-BED8-972DF85799DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Application", "2. Application", "{D33469FD-3C39-4A31-B6D5-496F41479656}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Infrastructure", "4. Infrastructure", "{784FBD9F-623F-484A-B995-64DB170B34A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3432FF13-E86F-45DF-9ACD-ADCF755F2B98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B2A412D-850A-4C27-8467-41C2CF6FA763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2A412D-850A-4C27-8467-41C2CF6FA763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2A412D-850A-4C27-8467-41C2CF6FA763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2A412D-850A-4C27-8467-41C2CF6FA763}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2B2A412D-850A-4C27-8467-41C2CF6FA763} = {814CFF6D-3D7E-45C0-816F-69F59BF73564}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AFDDA7C-D44B-419B-9FA4-3F20F662CCA4}
+	EndGlobalSection
+EndGlobal
