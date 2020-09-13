@@ -15,6 +15,7 @@ namespace Locadora.Infra.Data.Features.Customers
 
             builder
                 .Property(c => c.Name)
+                .IsRequired()
                 .HasMaxLength(200);
 
             builder

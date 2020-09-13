@@ -1,4 +1,6 @@
-﻿using Locadora.Application.Features.Common;
+﻿using FluentValidation.Results;
+
+using Locadora.Application.Features.Common;
 using Locadora.Domain.Features.Common;
 
 using Microsoft.AspNetCore.Mvc;
@@ -20,31 +22,41 @@ namespace Locadora.Api.Controllers.Genres
         [HttpPost]
         public async Task<IActionResult> Add(T entity)
         {
+            ValidationResult validationResult = entity.Validate();
+
+            if (!validationResult.IsValid)
+                return UnprocessableEntity(validationResult.Errors);
+
             return Ok(await serviceBase.Add(entity));
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public virtual async Task<IActionResult> GetAll()
         {
             return Ok(await serviceBase.GetAll());
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
+        public virtual async Task<IActionResult> GetById(int id)
         {
             return Ok(await serviceBase.GetById(id));
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(T entity)
+        public virtual async Task<IActionResult> Update(T entity)
         {
+            ValidationResult validationResult = entity.Validate();
+
+            if (!validationResult.IsValid)
+                return UnprocessableEntity(validationResult.Errors);
+
             await serviceBase.Update(entity);
 
             return Accepted();
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> Delete(int id)
+        public virtual async Task<IActionResult> Delete(int id)
         {
             await serviceBase.Delete(id);
 
@@ -52,7 +64,7 @@ namespace Locadora.Api.Controllers.Genres
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody]IEnumerable<int> ids)
+        public virtual async Task<IActionResult> Delete([FromBody]IEnumerable<int> ids)
         {
             await serviceBase.Delete(ids);
 
