@@ -17,6 +17,7 @@ using Locadora.Infra.Data.Features.Rents;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,6 +49,7 @@ namespace Locadora.Api
             {
                 options.UseSqlServer(configuration.GetConnectionString(SettingsDefinitions.RentalDatabase));
             });
+            services.AddTransient(sp => new SqlConnection(configuration.GetConnectionString(SettingsDefinitions.RentalDatabase)));
             services.AddAutoMapper(typeof(GenreProfile));
         }
 

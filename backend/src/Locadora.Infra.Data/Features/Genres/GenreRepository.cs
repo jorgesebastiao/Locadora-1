@@ -1,80 +1,66 @@
-﻿using AutoMapper;
+﻿using Dapper;
 
 using Locadora.Domain.Features.Genres;
-using Locadora.Infra.Data.Contexts;
 
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Locadora.Infra.Data
 {
-    public class GenreRepository : IGenreRepository
+    public sealed class GenreRepository : IGenreRepository, IDisposable
     {
-        // Não é necessário chamar o dispose do context pois a injeção de depêndencia vai tratar isso automaticamente
-        private readonly RentalContext rentalContext;
-        private readonly IMapper mapper;
+        private readonly SqlConnection sqlConnection;
+        private bool disposed;
 
-        public GenreRepository(RentalContext rentalContext, IMapper mapper)
+        public GenreRepository(SqlConnection sqlConnection)
         {
-            this.rentalContext = rentalContext;
-            this.mapper = mapper;
+            this.sqlConnection = sqlConnection;
         }
 
-        public async Task<int> Add(Genre entity)
+        public Task<int> Add(Genre entity)
         {
-            rentalContext.Genres.Add(entity);
-
-            await rentalContext.SaveChangesAsync();
-
-            return entity.Id;
+            return sqlConnection.QuerySingleAsync<int>(@"insert into Genres(Name, CreationDate, Active) values (@Name, @CreationDate, @Active);
+                                                select cast(SCOPE_IDENTITY() as int)", entity);
         }
 
-        public async Task Delete(int id)
+        public Task Delete(int id)
         {
-            Genre genreInstance = await GetById(id);
+            return sqlConnection.ExecuteAsync("delete from Genres where Id = @Id", new { Id = id });
+        }
 
-            if (genreInstance != null)
+        public Task Delete(IEnumerable<int> ids)
+        {
+            return sqlConnection.ExecuteAsync("delete from Genres where Id in @Ids", new { Ids = ids });
+        }
+
+        public void Dispose()
+        {
+            if (!disposed)
             {
-                rentalContext.Genres.Remove(genreInstance);
-
-                await rentalContext.SaveChangesAsync();
+                sqlConnection.Dispose();
             }
+
+            disposed = true;
         }
 
-        public async Task Delete(IEnumerable<int> ids)
+        public Task<IEnumerable<Genre>> GetAll()
         {
-            rentalContext.Genres.RemoveRange(rentalContext.Genres.Where(r => ids.Contains(r.Id)));
-
-            await rentalContext.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<Genre>> GetAll()
-        {
-            return await rentalContext.Genres.ToListAsync();
+            return sqlConnection.QueryAsync<Genre>("select * from Genres");
         }
 
         public Task<Genre> GetById(int id)
         {
-            return rentalContext.Genres.FirstOrDefaultAsync(g => g.Id == id);
+            return sqlConnection.QuerySingleAsync<Genre>("select * from Genres where Id = @Id", new { Id = id });
         }
 
         public async Task<Genre> Update(Genre entity)
         {
-            Genre genreInstance = await GetById(entity.Id);
+            await sqlConnection.ExecuteAsync("update Genres set Name = @Name, CreationDate = @CreationDate, Active = @Active where Id = @Id", entity);
 
-            if (genreInstance != null)
-            {
-                mapper.Map(entity, genreInstance);
-
-                rentalContext.Genres.Update(genreInstance);
-
-                await rentalContext.SaveChangesAsync();
-            }
-
-            return genreInstance;
+            return await GetById(entity.Id);
         }
     }
 }
