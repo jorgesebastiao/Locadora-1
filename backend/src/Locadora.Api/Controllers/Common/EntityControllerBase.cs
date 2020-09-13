@@ -50,9 +50,7 @@ namespace Locadora.Api.Controllers.Genres
             if (!validationResult.IsValid)
                 return UnprocessableEntity(validationResult.ToString());
 
-            await serviceBase.Update(entity);
-
-            return Accepted();
+            return Ok(await serviceBase.Update(entity));
         }
 
         [HttpDelete("{id:int}")]
