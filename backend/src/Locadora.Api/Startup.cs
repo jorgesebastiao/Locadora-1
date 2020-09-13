@@ -1,3 +1,5 @@
+using AutoMapper;
+
 using Locadora.Application.Features.Genres;
 using Locadora.Domain.Features.Genres;
 using Locadora.Domain.Utils;
@@ -30,6 +32,7 @@ namespace Locadora.Api
             {
                 options.UseSqlServer(configuration.GetConnectionString(SettingsDefinitions.RentalDatabase));
             });
+            services.AddAutoMapper(typeof(GenreProfile));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

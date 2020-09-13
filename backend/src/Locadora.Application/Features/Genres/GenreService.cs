@@ -25,9 +25,29 @@ namespace Locadora.Application.Features.Genres
             return genreRepository.Add(genre);
         }
 
+        public Task Delete(int id)
+        {
+            return genreRepository.Delete(id);
+        }
+
+        public Task Delete(IEnumerable<int> ids)
+        {
+            return genreRepository.Delete(ids);
+        }
+
         public Task<IEnumerable<Genre>> GetAll()
         {
             return genreRepository.GetAll();
+        }
+
+        public Task<Genre> GetById(int id)
+        {
+            return genreRepository.GetById(id);
+        }
+
+        public Task Update(Genre entity)
+        {
+            return genreRepository.Update(entity);
         }
     }
 }
