@@ -46,7 +46,7 @@ namespace Locadora.Infra.Data.Features.Customers
             return rentalContext.Customers.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public Task Update(Customer entity)
+        public Task<Customer> Update(Customer entity)
         {
             throw new System.NotImplementedException();
         }

@@ -1,5 +1,5 @@
 ﻿using Locadora.Application.Features.Common;
-using Locadora.Domain.Features.Locations;
+using Locadora.Domain.Features.Rents;
 
 namespace Locadora.Application.Features.Rents
 {

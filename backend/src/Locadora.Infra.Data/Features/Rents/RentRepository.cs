@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 
-using Locadora.Domain.Features.Locations;
 using Locadora.Domain.Features.Rents;
 using Locadora.Infra.Data.Contexts;
 
@@ -50,23 +49,31 @@ namespace Locadora.Infra.Data.Features.Rents
 
         public async Task<IEnumerable<Rent>> GetAll()
         {
-            return await rentalContext.Rents.ToListAsync();
+            return await rentalContext.Rents
+                                        .Include(r => r.RentMovies)
+                                        .Include(r => r.Customer)
+                                        .ToListAsync();
         }
 
         public Task<Rent> GetById(int id)
         {
-            return rentalContext.Rents.FirstOrDefaultAsync(r => r.Id == id);
+            return rentalContext.Rents.Include(r => r.RentMovies).Include(r => r.Customer).FirstOrDefaultAsync(r => r.Id == id);
         }
 
-        public async Task Update(Rent entity)
+        public async Task<Rent> Update(Rent entity)
         {
             Rent rentInstance = await GetById(entity.Id);
 
-            mapper.Map(entity, rentInstance);
+            if (rentInstance != null)
+            {
+                mapper.Map(entity, rentInstance);
 
-            rentalContext.Rents.Update(rentInstance);
+                rentalContext.Rents.Update(rentInstance);
 
-            await rentalContext.SaveChangesAsync();
+                await rentalContext.SaveChangesAsync();
+            }
+
+            return rentInstance;
         }
     }
 }

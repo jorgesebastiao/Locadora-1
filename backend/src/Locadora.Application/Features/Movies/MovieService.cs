@@ -45,7 +45,7 @@ namespace Locadora.Application.Features.Movies
             return movieRepository.GetById(id);
         }
 
-        public Task Update(Movie entity)
+        public Task<Movie> Update(Movie entity)
         {
             return movieRepository.Update(entity);
         }

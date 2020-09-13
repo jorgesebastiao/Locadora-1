@@ -61,7 +61,7 @@ namespace Locadora.Infra.Data.Features.Movies
             return rentalContext.Movies.FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public async Task Update(Movie entity)
+        public async Task<Movie> Update(Movie entity)
         {
             Movie movieInstance = await GetById(entity.Id);
 
@@ -73,6 +73,8 @@ namespace Locadora.Infra.Data.Features.Movies
 
                 await rentalContext.SaveChangesAsync();
             }
+
+            return movieInstance;
         }
     }
 }

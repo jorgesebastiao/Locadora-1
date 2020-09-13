@@ -39,7 +39,7 @@ namespace Locadora.Application.Features.Customers
             return customerRepository.GetById(id);
         }
 
-        public Task Update(Customer entity)
+        public Task<Customer> Update(Customer entity)
         {
             throw new NotImplementedException();
         }

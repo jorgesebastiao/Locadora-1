@@ -2,16 +2,17 @@
 
 using Locadora.Domain.Features.Common;
 using Locadora.Domain.Features.Customers;
-using Locadora.Domain.Features.Rents;
+using Locadora.Domain.Features.RentMovies;
 
 using System;
 using System.Collections.Generic;
 
-namespace Locadora.Domain.Features.Locations
+namespace Locadora.Domain.Features.Rents
 {
     public class Rent : Entity
     {
-        public List<Movie> Movies { get; set; }
+        public IEnumerable<RentMovie> RentMovies { get; set; }
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public DateTime RentDate { get; set; }
 

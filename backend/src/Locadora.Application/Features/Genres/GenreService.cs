@@ -14,7 +14,7 @@ namespace Locadora.Application.Features.Genres
             this.genreRepository = genreRepository;
         }
 
-        public Task<int> Add(Genre genre)
+        public Task<int> Add(Genre entity)
         {
             /* Por enquanto não estamos fazendo nada além de retornar o id do genêro inserido no repositório.
              * Mas esse serviço é responsável por mapear a entidade se ela não estivesse no formato correto,
@@ -22,7 +22,7 @@ namespace Locadora.Application.Features.Genres
              * Aqui também é o local responsável por chamar outros repositórios caso seja necessário.
             */
 
-            return genreRepository.Add(genre);
+            return genreRepository.Add(entity);
         }
 
         public Task Delete(int id)
@@ -45,7 +45,7 @@ namespace Locadora.Application.Features.Genres
             return genreRepository.GetById(id);
         }
 
-        public Task Update(Genre entity)
+        public Task<Genre> Update(Genre entity)
         {
             return genreRepository.Update(entity);
         }

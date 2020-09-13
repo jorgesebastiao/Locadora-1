@@ -11,7 +11,7 @@ namespace Locadora.Domain.Features.Common
 
         Task<IEnumerable<T>> GetAll();
 
-        Task Update(T entity);
+        Task<T> Update(T entity);
 
         Task Delete(int id);
 

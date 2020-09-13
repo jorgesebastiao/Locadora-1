@@ -7,9 +7,9 @@ namespace Locadora.Api.Controllers.Genres
 {
     [ApiController]
     [Route("[controller]")]
-    public class GenresController : EntityControllerBase<Genre>
+    public class GenreController : EntityControllerBase<Genre>
     {
-        public GenresController(IGenreService genreService) : base(genreService)
+        public GenreController(IGenreService genreService) : base(genreService)
         {
         }
     }

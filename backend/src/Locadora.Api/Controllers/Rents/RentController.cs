@@ -1,6 +1,6 @@
 ﻿using Locadora.Api.Controllers.Genres;
 using Locadora.Application.Features.Rents;
-using Locadora.Domain.Features.Locations;
+using Locadora.Domain.Features.Rents;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +8,9 @@ namespace Locadora.Api.Controllers.Rents
 {
     [ApiController]
     [Route("[controller]")]
-    public class RentsController : EntityControllerBase<Rent>
+    public class RentController : EntityControllerBase<Rent>
     {
-        public RentsController(IRentService rentService) : base(rentService)
+        public RentController(IRentService rentService) : base(rentService)
         {
         }
     }

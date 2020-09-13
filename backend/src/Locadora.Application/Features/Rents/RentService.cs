@@ -1,4 +1,4 @@
-﻿using Locadora.Domain.Features.Locations;
+﻿using Locadora.Domain.Features.Rents;
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,38 +7,40 @@ namespace Locadora.Application.Features.Rents
 {
     public class RentService : IRentService
     {
-        public RentService()
-        {
+        private readonly IRentRepository rentRepository;
 
+        public RentService(IRentRepository rentRepository)
+        {
+            this.rentRepository = rentRepository;
         }
         public Task<int> Add(Rent entity)
         {
-            throw new System.NotImplementedException();
+            return rentRepository.Add(entity);
         }
 
         public Task Delete(int id)
         {
-            throw new System.NotImplementedException();
+            return rentRepository.Delete(id);
         }
 
         public Task Delete(IEnumerable<int> ids)
         {
-            throw new System.NotImplementedException();
+            return rentRepository.Delete(ids);
         }
 
         public Task<IEnumerable<Rent>> GetAll()
         {
-            throw new System.NotImplementedException();
+            return rentRepository.GetAll();
         }
 
         public Task<Rent> GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return rentRepository.GetById(id);
         }
 
-        public Task Update(Rent entity)
+        public Task<Rent> Update(Rent entity)
         {
-            throw new System.NotImplementedException();
+            return rentRepository.Update(entity);
         }
     }
 }

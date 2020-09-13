@@ -61,7 +61,7 @@ namespace Locadora.Infra.Data
             return rentalContext.Genres.FirstOrDefaultAsync(g => g.Id == id);
         }
 
-        public async Task Update(Genre entity)
+        public async Task<Genre> Update(Genre entity)
         {
             Genre genreInstance = await GetById(entity.Id);
 
@@ -73,6 +73,8 @@ namespace Locadora.Infra.Data
 
                 await rentalContext.SaveChangesAsync();
             }
+
+            return genreInstance;
         }
     }
 }

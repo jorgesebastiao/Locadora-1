@@ -13,6 +13,7 @@ namespace Locadora.Domain
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
         public bool Active { get; set; }
+        public int GenreId { get; set; }
         public Genre Genre { get; set; }
 
         public override ValidationResult Validate()

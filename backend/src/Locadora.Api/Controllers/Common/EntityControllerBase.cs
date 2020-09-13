@@ -25,7 +25,7 @@ namespace Locadora.Api.Controllers.Genres
             ValidationResult validationResult = entity.Validate();
 
             if (!validationResult.IsValid)
-                return UnprocessableEntity(validationResult.Errors);
+                return UnprocessableEntity(validationResult.ToString());
 
             return Ok(await serviceBase.Add(entity));
         }
@@ -48,7 +48,7 @@ namespace Locadora.Api.Controllers.Genres
             ValidationResult validationResult = entity.Validate();
 
             if (!validationResult.IsValid)
-                return UnprocessableEntity(validationResult.Errors);
+                return UnprocessableEntity(validationResult.ToString());
 
             await serviceBase.Update(entity);
 
