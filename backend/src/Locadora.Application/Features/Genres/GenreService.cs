@@ -1,5 +1,6 @@
 ﻿using Locadora.Domain.Features.Genres;
 
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Locadora.Application.Features.Genres
@@ -22,6 +23,11 @@ namespace Locadora.Application.Features.Genres
             */
 
             return genreRepository.Add(genre);
+        }
+
+        public Task<IEnumerable<Genre>> GetAll()
+        {
+            return genreRepository.GetAll();
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Locadora.Domain.Features.Common;
+
+using System;
 
 namespace Locadora.Domain.Features.Genres
 {
-    public class Genre
+    public class Genre : Entity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
         public bool Active { get; set; }

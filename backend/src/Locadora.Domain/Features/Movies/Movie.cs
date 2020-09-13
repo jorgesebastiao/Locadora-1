@@ -1,15 +1,15 @@
-﻿using Locadora.Domain.Features.Customers;
+﻿using Locadora.Domain.Features.Common;
+using Locadora.Domain.Features.Genres;
 
 using System;
 
 namespace Locadora.Domain
 {
-    public class Movie
+    public class Movie : Entity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
         public bool Active { get; set; }
-        public Customer Customer { get; set; }
+        public Genre Genre { get; set; }
     }
 }

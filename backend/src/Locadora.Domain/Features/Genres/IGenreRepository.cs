@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using Locadora.Domain.Features.Common;
 
 namespace Locadora.Domain.Features.Genres
 {
-    public interface IGenreRepository
+    public interface IGenreRepository : IRepository<Genre>
     {
-        Task<int> Add(Genre genre);
     }
 }

@@ -1,6 +1,9 @@
 ﻿using Locadora.Domain.Features.Genres;
 using Locadora.Infra.Data.Contexts;
 
+using Microsoft.EntityFrameworkCore;
+
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Locadora.Infra.Data
@@ -22,6 +25,11 @@ namespace Locadora.Infra.Data
             await rentalContext.SaveChangesAsync();
 
             return genre.Id;
+        }
+
+        public async Task<IEnumerable<Genre>> GetAll()
+        {
+            return await rentalContext.Genres.ToListAsync();
         }
     }
 }

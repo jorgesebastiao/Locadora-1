@@ -1,5 +1,7 @@
 using Locadora.Application.Features.Genres;
+using Locadora.Domain.Features.Genres;
 using Locadora.Domain.Utils;
+using Locadora.Infra.Data;
 using Locadora.Infra.Data.Contexts;
 
 using Microsoft.AspNetCore.Builder;
@@ -23,6 +25,7 @@ namespace Locadora.Api
         {
             services.AddControllers();
             services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<IGenreRepository, GenreRepository>();
             services.AddDbContext<RentalContext>(options => 
             {
                 options.UseSqlServer(configuration.GetConnectionString(SettingsDefinitions.RentalDatabase));

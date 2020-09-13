@@ -1,11 +1,9 @@
-﻿using Locadora.Domain.Features.Genres;
-
-using System.Threading.Tasks;
+﻿using Locadora.Application.Features.Common;
+using Locadora.Domain.Features.Genres;
 
 namespace Locadora.Application.Features.Genres
 {
-    public interface IGenreService
+    public interface IGenreService : IServiceBase<Genre>
     {
-        Task<int> Add(Genre genre);
     }
 }

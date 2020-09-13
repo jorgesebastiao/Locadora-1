@@ -1,10 +1,14 @@
-﻿using Locadora.Application;
+﻿using Locadora.Application.Features.Genres;
 using Locadora.Domain.Features.Genres;
 
 using Microsoft.AspNetCore.Mvc;
 
+using System.Threading.Tasks;
+
 namespace Locadora.Api.Controllers.Genres
 {
+    [ApiController]
+    [Route("[controller]")]
     public class GenresController : ControllerBase
     {
         private readonly IGenreService genreService;
@@ -15,11 +19,15 @@ namespace Locadora.Api.Controllers.Genres
         }
 
         [HttpPost]
-        public IActionResult Add(Genre genre)
+        public async Task<IActionResult> Add(Genre genre)
         {
-            genreService.Add(genre);
+            return Ok(await genreService.Add(genre));
+        }
 
-            return Accepted();
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await genreService.GetAll());
         }
     }
 }
