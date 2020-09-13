@@ -2,12 +2,15 @@ using AutoMapper;
 
 using Locadora.Application.Features.Genres;
 using Locadora.Application.Features.Movies;
+using Locadora.Application.Features.Rents;
 using Locadora.Domain.Features.Genres;
 using Locadora.Domain.Features.Movies;
+using Locadora.Domain.Features.Rents;
 using Locadora.Domain.Utils;
 using Locadora.Infra.Data;
 using Locadora.Infra.Data.Contexts;
 using Locadora.Infra.Data.Features.Movies;
+using Locadora.Infra.Data.Features.Rents;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +36,8 @@ namespace Locadora.Api
             services.AddTransient<IGenreRepository, GenreRepository>();
             services.AddTransient<IMovieRepository, MovieRepository>();
             services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<IRentService, RentService>();
+            services.AddTransient<IRentRepository, RentRepository>();
             services.AddDbContext<RentalContext>(options => 
             {
                 options.UseSqlServer(configuration.GetConnectionString(SettingsDefinitions.RentalDatabase));

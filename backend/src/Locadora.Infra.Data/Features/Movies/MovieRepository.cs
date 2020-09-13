@@ -7,6 +7,7 @@ using Locadora.Infra.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Locadora.Infra.Data.Features.Movies
@@ -45,10 +46,9 @@ namespace Locadora.Infra.Data.Features.Movies
 
         public async Task Delete(IEnumerable<int> ids)
         {
-            foreach (int id in ids)
-            {
-                await Delete(id);
-            }
+            rentalContext.Movies.RemoveRange(rentalContext.Movies.Where(r => ids.Contains(r.Id)));
+
+            await rentalContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Movie>> GetAll()
