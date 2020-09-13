@@ -7,7 +7,7 @@ namespace Locadora.Domain.Features.Movies
         public MovieValidator()
         {
             RuleFor(m => m.Name).MaximumLength(200).NotEmpty();
-            RuleFor(m => m.Genre).NotNull();
+            RuleFor(m => m.GenreId).GreaterThan(0);
         }
     }
 }
