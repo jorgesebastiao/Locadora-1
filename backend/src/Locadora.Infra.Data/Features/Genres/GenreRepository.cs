@@ -69,6 +69,8 @@ namespace Locadora.Infra.Data
             {
                 mapper.Map(entity, genreInstance);
 
+                rentalContext.Genres.Update(genreInstance);
+
                 await rentalContext.SaveChangesAsync();
             }
         }

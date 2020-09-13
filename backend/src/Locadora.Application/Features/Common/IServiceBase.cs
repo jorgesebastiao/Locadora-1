@@ -7,7 +7,7 @@ namespace Locadora.Application.Features.Common
 {
     public interface IServiceBase<T> where T : Entity
     {
-        Task<int> Add(T genre);
+        Task<int> Add(T entity);
 
         Task<T> GetById(int id);
 
