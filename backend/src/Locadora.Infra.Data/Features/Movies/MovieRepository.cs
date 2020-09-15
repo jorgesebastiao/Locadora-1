@@ -58,7 +58,7 @@ namespace Locadora.Infra.Data.Features.Movies
 
         public Task<Movie> GetById(int id)
         {
-            return rentalContext.Movies.FirstOrDefaultAsync(m => m.Id == id);
+            return rentalContext.Movies.SingleOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<Movie> Update(Movie entity)
