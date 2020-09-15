@@ -7,6 +7,7 @@ Os filmes serão inseridos no banco ao executar a migração com o EntityFramewo
   ```sh
   Update-Database
   ```
+Para executar o backend deve ser aberto o projeto e pressionar o botão F5
 
 A conectionString padrão é
 
