@@ -13,6 +13,12 @@ namespace Locadora.Api.Controllers.Customers
     [Route("[controller]")]
     public class CustomerController : EntityControllerBase<Customer>
     {
+
+        /*
+         * Por enquanto apenas as operações de Add e GetById estão disponiveis para Cliente
+         * Devido a isso estou retornando código de erro 403 Forbidden para o cliente ao tentar
+         * executar as outras operações
+         */
         public CustomerController(ICustomerService customerService) : base(customerService)
         {
         }
