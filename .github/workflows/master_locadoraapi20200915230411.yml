@@ -11,7 +11,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: windows-latest
-
+    
     steps:
     - uses: actions/checkout@master
 
@@ -33,3 +33,4 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_2eb12da95fe04d6798b9bf8618bfe952 }}
         package: .
+        working-directory: ./frontend
