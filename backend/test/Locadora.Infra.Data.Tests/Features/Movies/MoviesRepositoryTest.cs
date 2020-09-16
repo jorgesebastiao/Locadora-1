@@ -18,6 +18,9 @@ using System.Threading.Tasks;
 
 namespace Locadora.Infra.Data.Tests.Features.Movies
 {
+    /* Essa classe foi criada de forma genérica para permitir usar os mesmos testes
+     * no banco de dados SqlServer e em memória
+     */
     public abstract class MoviesRepositoryTest
     {
         protected RentalContext rentalContext;
