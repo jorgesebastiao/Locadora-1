@@ -31,3 +31,5 @@ Existem testes de unidade para a entidade Filme.
 
 Para todas as entidades foram criadas APIs de Adição, Busca, Update e Delete.
 A entidade Cliente não possui opção de update e delete no momento.
+
+O front-end não realiza todas as operações no banco, ele cadastra usuário, realiza login, lista/deleta as locaçãoes e cadastra uma nova locação
