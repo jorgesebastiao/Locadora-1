@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 
 namespace Locadora.Api.Controllers.Genres
 {
+
+    /// <summary>
+    /// Classe base para os controladores da aplicação
+    /// Todas as entidades seguem um padrão, essa classe serve para não haver repetição da mesma lógica em todos os controladores
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class EntityControllerBase<T> : ControllerBase where T : Entity
     {
         private readonly IServiceBase<T> serviceBase;
@@ -22,12 +28,13 @@ namespace Locadora.Api.Controllers.Genres
         [HttpPost]
         public async Task<IActionResult> Add(T entity)
         {
+            //Realizando a validação para não prosseguir caso a entidade esteja com valores inválidos
             ValidationResult validationResult = entity.Validate();
 
             if (!validationResult.IsValid)
-                return UnprocessableEntity(validationResult.ToString());
+                return UnprocessableEntity(validationResult.ToString()); // Retornar erro code 422 para entidade invalida
 
-            return Ok(await serviceBase.Add(entity));
+            return Ok(await serviceBase.Add(entity)); // Retornar erro code 200 com o id da entidade inserida no banco
         }
 
         [HttpGet]

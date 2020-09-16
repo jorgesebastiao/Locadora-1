@@ -17,6 +17,12 @@ namespace Locadora.Application.Features.Movies
 
         public Task<int> Add(Movie entity)
         {
+            /* Por enquanto não estamos fazendo nada além de retornar o id do genêro inserido no repositório.
+            * Mas esse serviço é responsável por mapear a entidade se ela não estiver no formato esperado pelo repositório,
+            * se vier no formato do CQRS por exemplo.
+            * Aqui também é o local responsável por chamar outros repositórios caso seja necessário.
+            */
+
             return movieRepository.Add(entity);
         }
 

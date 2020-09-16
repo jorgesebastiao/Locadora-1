@@ -51,6 +51,8 @@ namespace Locadora.Api
             });
             services.AddTransient(sp => new SqlConnection(configuration.GetConnectionString(SettingsDefinitions.RentalDatabase)));
             services.AddAutoMapper(typeof(GenreProfile));
+
+            // É necessário habilitar o CORS para receber as chamadas do axios que o frontend faz
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllHeaders", corsbuilder =>

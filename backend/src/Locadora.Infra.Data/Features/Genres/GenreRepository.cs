@@ -12,6 +12,7 @@ namespace Locadora.Infra.Data
 {
     public sealed class GenreRepository : IGenreRepository, IDisposable
     {
+        // Utilizando dapper para fazer as consultas no banco de dados
         private readonly SqlConnection sqlConnection;
         private bool disposed;
 
