@@ -33,7 +33,12 @@
     line-height: 32px;
 }
 
+.new-rent-container .content section h1 {
+    margin-bottom: 20px;
+}
+
 .list-items {
     width: 100%;
     max-width: 800px;
+    border-radius: 8px;
 }

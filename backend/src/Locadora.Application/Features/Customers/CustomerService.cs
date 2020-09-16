@@ -31,7 +31,7 @@ namespace Locadora.Application.Features.Customers
 
         public Task<IEnumerable<Customer>> GetAll()
         {
-            throw new NotImplementedException();
+            return customerRepository.GetAll();
         }
 
         public Task<Customer> GetById(int id)

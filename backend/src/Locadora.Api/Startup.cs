@@ -51,6 +51,16 @@ namespace Locadora.Api
             });
             services.AddTransient(sp => new SqlConnection(configuration.GetConnectionString(SettingsDefinitions.RentalDatabase)));
             services.AddAutoMapper(typeof(GenreProfile));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders", corsbuilder =>
+                {
+                    corsbuilder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -59,6 +69,8 @@ namespace Locadora.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("AllowAllHeaders");
 
             app.UseRouting();
 

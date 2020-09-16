@@ -51,6 +51,8 @@ namespace Locadora.Infra.Data.Features.Rents
         {
             return await rentalContext.Rents
                                         .Include(r => r.RentMovies)
+                                            .ThenInclude(r => r.Movie)
+                                                .ThenInclude(m => m.Genre)
                                         .Include(r => r.Customer)
                                         .ToListAsync();
         }

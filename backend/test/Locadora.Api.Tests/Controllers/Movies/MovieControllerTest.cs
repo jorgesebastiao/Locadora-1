@@ -109,6 +109,23 @@ namespace Locadora.Api.Tests.Controllers.Movies
         }
 
         [Test]
+        public async Task Test_MovieController_GetById_Invalid_Movie_Should_Return_NotFound()
+        {
+            Movie fakeMovie = null;
+
+            int fakeId = 1;
+
+            movieServiceMock.Setup(m => m.GetById(fakeId)).Returns(Task.FromResult(fakeMovie));
+
+            var apiResult = await movieController.GetById(fakeId);
+
+            apiResult.Should().BeOfType<NotFoundResult>();
+
+            movieServiceMock.Verify(m => m.GetById(fakeId), Times.Once);
+            movieServiceMock.VerifyNoOtherCalls();
+        }
+
+        [Test]
         public async Task Test_MovieController_Update_Should_Be_Ok()
         {
             var movieMock = new Mock<Movie>();

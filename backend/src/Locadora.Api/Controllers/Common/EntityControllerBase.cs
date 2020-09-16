@@ -39,7 +39,12 @@ namespace Locadora.Api.Controllers.Genres
         [HttpGet("{id:int}")]
         public virtual async Task<IActionResult> GetById(int id)
         {
-            return Ok(await serviceBase.GetById(id));
+            T foundedEntity = await serviceBase.GetById(id);
+
+            if (foundedEntity == null)
+                return NotFound();
+
+            return Ok(foundedEntity);
         }
 
         [HttpPut]

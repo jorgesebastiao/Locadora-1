@@ -15,17 +15,12 @@ namespace Locadora.Api.Controllers.Customers
     {
 
         /*
-         * Por enquanto apenas as operações de Add e GetById estão disponiveis para Cliente
+         * Por enquanto apenas as operações de Add e GetById e GetAll estão disponiveis para Cliente
          * Devido a isso estou retornando código de erro 403 Forbidden para o cliente ao tentar
          * executar as outras operações
          */
         public CustomerController(ICustomerService customerService) : base(customerService)
         {
-        }
-
-        public override async Task<IActionResult> GetAll()
-        {
-            return await Task.FromResult(Forbid());
         }
 
         public override async Task<IActionResult> Delete([FromBody] IEnumerable<int> ids)

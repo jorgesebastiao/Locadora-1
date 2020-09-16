@@ -36,9 +36,9 @@ namespace Locadora.Infra.Data.Features.Customers
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<Customer>> GetAll()
+        public async Task<IEnumerable<Customer>> GetAll()
         {
-            throw new System.NotImplementedException();
+            return await rentalContext.Customers.ToListAsync();
         }
 
         public Task<Customer> GetById(int id)
