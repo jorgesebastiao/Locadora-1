@@ -32,4 +32,4 @@ jobs:
         app-name: 'locadoraapp'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_546d79cb3b254180b8ce1dc5559cdfb5 }}
-        package: .
+        package: ./frontend/
