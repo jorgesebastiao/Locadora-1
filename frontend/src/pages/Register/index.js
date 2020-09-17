@@ -15,6 +15,18 @@ export default function Register() {
     async function handleRegister(e) {
         e.preventDefault();
 
+        if (name.length === 0) {
+            alert('O campo nome não pode estar vazio!');
+            
+            return;
+        }
+
+        if (cpf.length !== 14) {
+            alert('O cpf deve possuir 14 caracteres!');
+
+            return;
+        }
+
         const data = {
             name,
             cpf
