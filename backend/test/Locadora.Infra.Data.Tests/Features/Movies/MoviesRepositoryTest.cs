@@ -96,7 +96,7 @@ namespace Locadora.Infra.Data.Tests.Features.Movies
         [Test]
         public async Task Test_GetAll_Movies_Should_Be_Ok()
         {
-            var moviesCount = 3; // Filmes criados na inicialização do banco
+            var moviesCount = 15; // Filmes criados na inicialização do banco
 
             IEnumerable<Movie> movies = await movieRepository.GetAll();
 
@@ -109,7 +109,7 @@ namespace Locadora.Infra.Data.Tests.Features.Movies
         public async Task Test_Get_Movie_By_Id_Should_Be_Ok()
         {
             var movieId = 3;
-            var expectedMovieName = "Homem de Ferro";
+            var expectedMovieName = "Capitã Marvel";
 
             Movie movie = await movieRepository.GetById(movieId);
 

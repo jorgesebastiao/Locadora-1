@@ -11,7 +11,7 @@ namespace Locadora.Domain.Tests.Features.Movies
         {
             var movie = new Movie
             { 
-                Genre = new Domain.Features.Genres.Genre()
+                GenreId = 1
             };
 
             int errorsCount = 1;
@@ -28,7 +28,7 @@ namespace Locadora.Domain.Tests.Features.Movies
             var movie = new Movie
             {
                 Name = new string('a', 201),
-                Genre = new Domain.Features.Genres.Genre()
+                GenreId = 1
             };
 
             int errorsCount = 1;
@@ -40,12 +40,12 @@ namespace Locadora.Domain.Tests.Features.Movies
         }
 
         [Test]
-        public void Validate_Movie_With_Genre_Null_Should_Be_Invalid()
+        public void Validate_Movie_With_GenreId_Zero_Should_Be_Invalid()
         {
             var movie = new Movie
             {
                 Name = "Fake movie",
-                Genre = null
+                GenreId = 0
             };
 
             int errorsCount = 1;
@@ -62,7 +62,7 @@ namespace Locadora.Domain.Tests.Features.Movies
             var movie = new Movie
             {
                 Name = "Fake movie",
-                Genre = new Domain.Features.Genres.Genre()
+                GenreId = 1
             };
 
             var validationResult = movie.Validate();
