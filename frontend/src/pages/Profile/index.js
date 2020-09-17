@@ -49,10 +49,12 @@ export default function Profile() {
             </header>
             <h1>Locações realizadas</h1>
             <ul>
-                {rents.map(rent => (
+                {/*
+                    Mapear de forma reversa para as locações mais recentes ficarem no topo
+                */rents.slice(0).reverse().map(rent => (
                     <li key={rent.id}>
                     <strong>Data da locação:</strong>
-                    <p>{ new Date(rent.rentDate).toLocaleString() }</p>
+                    <p>{ new Date(rent.rentDate + 'Z').toLocaleString() }</p>
                     <strong>Filmes:</strong>
                     <ul> 
                         {rent.rentMovies.map(m => (
