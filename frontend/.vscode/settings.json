@@ -1,0 +1,9 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/1142bc1a-e539-480a-a39d-d80fef5151aa/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/locadora-webapp",
+    "appService.deploySubpath": "build",
+    "appService.showBuildDuringDeployPrompt": false,
+}
