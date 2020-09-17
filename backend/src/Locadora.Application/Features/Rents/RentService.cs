@@ -38,6 +38,11 @@ namespace Locadora.Application.Features.Rents
             return rentRepository.GetById(id);
         }
 
+        public Task<IEnumerable<Rent>> GetRentsByCustomer(int customerId)
+        {
+            return rentRepository.GetRentsByCustomer(customerId);
+        }
+
         public Task<Rent> Update(Rent entity)
         {
             return rentRepository.Update(entity);

@@ -62,6 +62,17 @@ namespace Locadora.Infra.Data.Features.Rents
             return rentalContext.Rents.Include(r => r.RentMovies).Include(r => r.Customer).FirstOrDefaultAsync(r => r.Id == id);
         }
 
+        public async Task<IEnumerable<Rent>> GetRentsByCustomer(int customerId)
+        {
+            return await rentalContext.Rents
+                                        .Include(r => r.RentMovies)
+                                            .ThenInclude(r => r.Movie)
+                                                .ThenInclude(m => m.Genre)
+                                        .Include(r => r.Customer)
+                                        .Where(r => r.CustomerId == customerId)
+                                        .ToListAsync();
+        }
+
         public async Task<Rent> Update(Rent entity)
         {
             Rent rentInstance = await GetById(entity.Id);

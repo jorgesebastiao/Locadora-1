@@ -15,7 +15,11 @@ export default function Profile() {
     const customerId = localStorage.getItem('customerId');
 
     useEffect(() => {
-        api.get('rent').then(response => {
+        api.get('rent', {
+            headers: {
+                Authorization: customerId,
+            }
+        }).then(response => {
             setRents(response.data);
         })
     }, [customerId]);
