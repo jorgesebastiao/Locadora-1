@@ -3,7 +3,7 @@ import axios from 'axios';
 let apiAddress = '';
 
 if (process.env.NODE_ENV === 'production') {
-    apiAddress = 'https://locadorawebapp.azurewebsites.net';
+    apiAddress = 'https://locadora-api.azurewebsites.net';
 } else {
     apiAddress = 'http://localhost:5000';
 }
